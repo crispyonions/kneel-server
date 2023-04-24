@@ -1,0 +1,29 @@
+CREATE TABLE `Metals`
+(
+    `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    `metal` NVARCHAR(160) NOT NULL,
+    `price` NUMERIC(5,2) NOT NULL
+);
+
+CREATE TABLE `Sizes` (
+    `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    `name` NVARCHAR NOT NULL,
+    `description` NVARCHAR,
+    `price` NUMERIC(5,2) NOT NULL
+);
+
+CREATE TABLE `Styles` (
+    `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    `name` NVARCHAR NOT NULL,
+    `description` NVARCHAR NOT NULL,
+    `price` NUMERIC(5,2) NOT NULL
+);
+
+CREATE TABLE `Orders` (
+    `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    `items` NVARCHAR NOT NULL,
+    `product` NVARCHAR NOT NULL,
+    `total` NUMERIC(5,2) NOT NULL,
+    `metal_id` INTEGER NOT NULL,
+    FOREIGN KEY(`metal_id`) REFERENCES `Metals`(`id`)
+);
